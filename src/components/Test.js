@@ -134,3 +134,81 @@
 //     </div>
 //   );
 // }
+
+// export default function Test() {
+//   /**
+//    * Challenge: Convert the code below to use an array
+//    * held in state instead of a local variable. Initialize
+//    * the state array with the same 2 items below
+//    *
+//    * Don't worry about fixing `addItem` quite yet.
+//    */
+//   const [thingsArray, setThingsArray] = React.useState(["Thing 1", "Thing 2"]);
+
+//   function addItem() {
+//     setThingsArray((prevState) => [
+//       ...prevState,
+//       `Thing ${prevState.length + 1}`,
+//     ]);
+//   }
+
+//   const thingsElements = thingsArray.map((thing) => <p key={thing}>{thing}</p>);
+
+//   return (
+//     <div>
+//       <button onClick={addItem}>Add Item</button>
+//       {thingsElements}
+//     </div>
+//   );
+// }
+
+// export default function App() {
+//   const [contact, setContact] = React.useState({
+//     firstName: "John",
+//     lastName: "Schmoe",
+//     phone: "+2 (719) 555-1212",
+//     email: "johnschmoe@example.com",
+//     isFavorite: false,
+//   });
+//   /**
+//    * Challenge: Fill in the values in the markup
+//    * using the properties of our state object above
+//    * (Ignore `isFavorite` for now)
+//    */
+
+//   /**
+//    * Challenge: Use a ternary to determine which star image filename
+//    * should be used based on the `contact.isFavorite` property
+//    *
+//    * `true` => "star-filled.png"
+//    * `false` => "star-empty.png"
+//    */
+
+//   let starIcon = contact.isFavorite ? "filled" : "empty";
+
+//   function toggleFavorite() {
+//     setContact((prevState) => ({
+//       ...prevState,
+//       isFavorite: !prevState.isFavorite,
+//     }));
+//   }
+
+//   return (
+//     <main>
+//       <article className="card">
+//         <img src="./images/user.png" className="card--image" alt="gentleman" />
+//         <div className="card--info">
+//           <img
+//             src={`../images/star-${starIcon}.png`}
+//             className="card--favorite"
+//             onClick={toggleFavorite}
+//             alt={`star-${starIcon}`}
+//           />
+//           <h2 className="card--name">{`${contact.firstName} ${contact.lastName}`}</h2>
+//           <p className="card--contact">{contact.phone}</p>
+//           <p className="card--contact">{contact.email}</p>
+//         </div>
+//       </article>
+//     </main>
+//   );
+// }
