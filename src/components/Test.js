@@ -212,3 +212,211 @@
 //     </main>
 //   );
 // }
+
+// export default function Test() {
+//   const [count, setCount] = React.useState(0);
+
+//   function add() {
+//     setCount((prevCount) => prevCount + 1);
+//   }
+
+//   function subtract() {
+//     setCount((prevCount) => prevCount - 1);
+//   }
+
+//   console.log("test redered");
+
+//   /**
+//    * Challenge:
+//    * - Create a new component named Count
+//    *    - It should receive a prop called `number`, whose value
+//    *      is the current value of our count
+//    *    - Have the component render the whole div.counter--count
+//    *      and display the incoming prop `number`
+//    * - Replace the div.counter--count below with an instance of
+//    *   the new Count component
+//    */
+//   return (
+//     <div className="counter">
+//       <button className="counter--minus" onClick={subtract}>
+//         –
+//       </button>
+//       <Count number={count} />
+//       <button className="counter--plus" onClick={add}>
+//         +
+//       </button>
+//     </div>
+//   );
+// }
+
+// function Count(props) {
+//   const { number } = props;
+//   console.log("count rendered");
+//   return (
+//     <div className="counter--count">
+//       <h1>{number}</h1>
+//     </div>
+//   );
+// }
+
+// export default function Test() {
+//   const [contact, setContact] = React.useState({
+//     firstName: "John",
+//     lastName: "Doe",
+//     phone: "+1 (719) 555-1212",
+//     email: "itsmyrealname@example.com",
+//     isFavorite: true,
+//   });
+
+//   /**
+//    * Challenge: Move the star image into its own component
+//    * - It should receive a prop called `isFilled` that it
+//    *   uses to determine which icon it will display
+//    * - Import and render that component, passing the value of
+//    *   `isFavorite` to the new `isFilled` prop.
+//    * - Don't worry about the abiliity to flip this value quite yet.
+//    *   Instead, you can test if it's working by manually changing
+//    *   `isFavorite` in state above.
+//    */
+
+//   function toggleFavorite() {
+//     setContact((prevContact) => ({
+//       ...prevContact,
+//       isFavorite: !prevContact.isFavorite,
+//     }));
+//   }
+
+//   return (
+//     <main>
+//       <article className="card">
+//         <img src="./images/user.png" className="card--image" alt="gentleman" />
+//         <div className="card--info">
+//           <Star isFilled={contact.isFavorite} handleClick={toggleFavorite} />
+//           <h2 className="card--name">
+//             {contact.firstName} {contact.lastName}
+//           </h2>
+//           <p className="card--contact">{contact.phone}</p>
+//           <p className="card--contact">{contact.email}</p>
+//         </div>
+//       </article>
+//     </main>
+//   );
+// }
+
+// function Star(props) {
+//   const { isFilled, handleClick } = props;
+//   let starIcon = isFilled ? "star-filled.png" : "star-empty.png";
+//   return (
+//     <img
+//       src={`../images/${starIcon}`}
+//       className="card--favorite"
+//       onClick={handleClick}
+//       alt={starIcon}
+//     />
+//   );
+// }
+
+// const boxesArray = [
+//   {
+//     id: 1,
+//     on: true,
+//   },
+//   {
+//     id: 2,
+//     on: false,
+//   },
+//   {
+//     id: 3,
+//     on: true,
+//   },
+//   {
+//     id: 4,
+//     on: true,
+//   },
+//   {
+//     id: 5,
+//     on: false,
+//   },
+//   {
+//     id: 6,
+//     on: false,
+//   },
+// ];
+
+// export default function Test() {
+//   /**
+//    * Challenge part 1:
+//    * 1. Initialize state with the default value of the
+//    *    array pulled in from boxes.js
+//    * 2. Map over that state array and display each one
+//    *    as an empty square (black border, transparent bg color)
+//    *    (Don't worry about using the "on" property yet)
+//    */
+
+//   /**
+//    * Challenge part 2:
+//    * 1. Create a separate component called "Box" and
+//    *    replace the `div` above with our <Box /> components
+//    * 2. Pass the Box component a prop called `on` with the
+//    *    value of the same name from the `boxes` objects
+//    * 3. In the Box component, apply dynamic styles to determine
+//    *    the backgroundColor of the box. If it's `on`, set the
+//    *    backgroundColor to "#222222". If off, set it to "none"
+//    */
+//   const [boxes, setBoxes] = React.useState(boxesArray);
+//   /**
+//    * Challenge: Create a toggle() function that logs
+//    * "clicked!" to the console
+//    *
+//    * Pass that function down to each of the Box components
+//    * and set it up so when they get clicked it runs the function
+//    */
+
+//   /**
+//    * Challenge: use setSquares to update the
+//    * correct square in the array.
+//    *
+//    * Make sure not to directly modify state!
+//    *
+//    * Hint: look back at the lesson on updating arrays
+//    * in state if you need a reminder on how to do this
+//    */
+
+//   function toggleBox(id) {
+//     setBoxes((prevBoxes) => {
+//       return prevBoxes.map((box) => {
+//         return box.id === id ? { ...box, on: !box.on } : box;
+//       });
+//     });
+//   }
+
+//   const displayBoxes = boxes.map((box) => (
+//     <Box toggleBox={() => toggleBox(box.id)} on={box.on} key={box.id} />
+//   ));
+//   return (
+//     <main>
+//       <h1>Boxes will go here</h1>
+//       {displayBoxes}
+//     </main>
+//   );
+// }
+
+// function Box(props) {
+//   const { toggleBox, on } = props;
+//   /**
+//    * Challenge: Create state controlling whether
+//    * this box is "on" or "off". Use the incoming
+//    * `props.on` to determine the initial state.
+//    *
+//    * Create an event listener so when the box is clicked,
+//    * it toggles from "on" to "off".
+//    *
+//    * Goal: clicking each box should toggle it on and off.
+//    */
+
+//   const styles = {
+//     backgroundColor: on ? "#222222" : "transparent",
+//   };
+
+//   return <div className="box" style={styles} onClick={toggleBox}></div>;
+// }

@@ -228,3 +228,12 @@ h3 {
   color: gray;
   margin-block: 7px;
 } */
+
+.box {
+  border: solid 1px #000;
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  border-radius: 5px;
+  display: inline-block;
+}
