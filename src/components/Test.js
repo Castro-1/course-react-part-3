@@ -1,6 +1,6 @@
 //App to see how to use functions with js with react.
 
-// import React from "react";
+import React from "react";
 
 // export default function Test() {
 //   function handleClick() {
@@ -420,3 +420,81 @@
 
 //   return <div className="box" style={styles} onClick={toggleBox}></div>;
 // }
+
+// export default function Joke(props) {
+//     /**
+//      * Challenge:
+//      * - Create state `isShown` (boolean, default to `false`)
+//      * - Add a button that toggles the value back and forth
+//      */
+//     const [isShown, setIsShown] = React.useState(false)
+//     /**
+//      * Challenge:
+//      * - Only display the punchline paragraph if `isShown` is true
+//      */
+//     function toggleShown(){
+//         setIsShown(prevShown => !prevShown)
+//     }
+//     return (
+//         <div>
+//             {props.setup && <h3>{props.setup}</h3>}
+//             {isShown && <p>{props.punchline}</p>}
+//             <button onClick={toggleShown}>Show Punchline</button>
+//             <hr />
+//         </div>
+//     )
+// }
+
+// export default function Test() {
+//   const [messages, setMessages] = React.useState(["a", "b"]);
+//   /**
+//    * Challenge:
+//    * - Only display the <h1> below if there are unread messages
+//    */
+//   return (
+//     <div>
+//       {messages.length > 0 && (
+//         <h1>You have {messages.length} unread messages!</h1>
+//       )}
+//     </div>
+//   );
+// }
+
+// export default function Joke(props) {
+//   const [isShown, setIsShown] = React.useState(false);
+//   const action = isShown ? "Hide" : "Show";
+//   function toggleShown() {
+//     setIsShown((prevShown) => !prevShown);
+//   }
+//   return (
+//     <div>
+//       {props.setup && <h3>{props.setup}</h3>}
+//       {isShown && <p>{props.punchline}</p>}
+//       <button onClick={toggleShown}>{action} Punchline</button>
+//       <hr />
+//     </div>
+//   );
+// }
+
+export default function Test() {
+  const [messages, setMessages] = React.useState(["a", "b"]);
+  /**
+   * Challenge:
+   * - If there are no unread messages, display "You're all caught up!"
+   * - If there are > 0 unread messages, display "You have <n> unread
+   *   message(s)"
+   *      - If there's exactly 1 unread message, it should read "message"
+   *        (singular)
+   */
+  const displayFrase =
+    messages.length > 0
+      ? `You have ${messages.length} unread message${
+          messages.length > 1 ? "s" : ""
+        }`
+      : "You're all caught up!";
+  return (
+    <div>
+      <h1>{displayFrase}</h1>
+    </div>
+  );
+}
