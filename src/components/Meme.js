@@ -29,6 +29,13 @@ export default function Meme() {
    * to reflect our newly reformed state object and array in the
    * correct way.
    */
+  /**
+   * Challenge:
+   * 1. Set up the text inputs to save to
+   *    the `topText` and `bottomText` state variables.
+   * 2. Replace the hard-coded text on the image with
+   *    the text being saved to state.
+   */
   const [meme, setMeme] = React.useState({
     topText: "",
     bottomText: "",
@@ -45,16 +52,46 @@ export default function Meme() {
     setMeme((prevState) => ({ ...prevState, randomImage: randomMeme.url }));
     console.log(meme);
   }
+
+  console.log(meme);
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setMeme((prevMeme) => {
+      return {
+        ...prevMeme,
+        [name]: value,
+      };
+    });
+  }
   return (
-    <main className="meme">
+    <main>
       <div className="form">
-        <input type="text" className="input" placeholder="top text" />
-        <input type="text" className="input" placeholder="bottom text" />
+        <input
+          type="text"
+          className="input"
+          placeholder="top text"
+          name="topText"
+          value={meme.topText}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          className="input"
+          placeholder="bottom text"
+          name="bottomText"
+          value={meme.bottomText}
+          onChange={handleChange}
+        />
         <button className="button" onClick={getMemeImage}>
           Get a new meme image 🖼
         </button>
       </div>
-      <img className="memeImage" src={meme.randomImage} alt="meme" />
+      <div className="meme">
+        <img className="memeImage" src={meme.randomImage} alt="meme" />
+        <h2 className="meme--text top">{meme.topText}</h2>
+        <h2 className="meme--text bottom">{meme.bottomText}</h2>
+      </div>
     </main>
   );
 }
