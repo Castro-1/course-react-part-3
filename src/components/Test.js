@@ -790,3 +790,49 @@
 //     </div>
 //   );
 // }
+
+// function WindowTracker() {
+//   /**
+//    * Challenge:
+//    * 1. Create state called `windowWidth`, default to
+//    *    `window.innerWidth`
+//    * 2. When the window width changes, update the state
+//    * 3. Display the window width in the h1 so it updates
+//    *    every time it changes
+//    */
+//   const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+//   React.useEffect(() => {
+//     function watchWidth() {
+//       console.log("setting up");
+//       setWindowWidth(window.innerWidth);
+//     }
+//     window.addEventListener("resize", watchWidth);
+//     return function () {
+//       console.log("cleaning up");
+//       window.removeEventListener("resize", watchWidth);
+//     };
+//   }, []);
+//   return <h1>Window width: {windowWidth}</h1>;
+// }
+
+// export default function App() {
+//   /**
+//    * Challenge:
+//    * 1. Create state called `show`, default to `true`
+//    * 2. When the button is clicked, toggle `show`
+//    * 3. Only display `<WindowTracker>` if `show` is `true`
+//    */
+
+//   const [show, setShow] = React.useState(true);
+
+//   function toggleShow() {
+//     setShow((prevShow) => !prevShow);
+//   }
+
+//   return (
+//     <div className="container">
+//       <button onClick={toggleShow}>Toggle WindowTracker</button>
+//       {show && <WindowTracker />}
+//     </div>
+//   );
+// }
