@@ -1,5 +1,5 @@
 import React from "react";
-import memesData from "./memesData";
+// import memesData from "./memesData";
 
 export default function Meme() {
   /**
@@ -36,6 +36,21 @@ export default function Meme() {
    * 2. Replace the hard-coded text on the image with
    *    the text being saved to state.
    */
+  /**
+   * Challenge:
+   * As soon as the Meme component loads the first time,
+   * make an API call to "https://api.imgflip.com/get_memes".
+   *
+   * When the data comes in, save just the memes array part
+   * of that data to the `allMemes` state
+   *
+   * Think about if there are any dependencies that, if they
+   * changed, you'd want to cause to re-run this function.
+   *
+   * Hint: for now, don't try to use an async/await function.
+   * Instead, use `.then()` blocks to resolve the promises
+   * from using `fetch`. We'll learn why after this challenge.
+   */
   const [meme, setMeme] = React.useState({
     topText: "",
     bottomText: "",
@@ -43,17 +58,27 @@ export default function Meme() {
   });
 
   const [allMemeImages, setAllMemeImages] = React.useState(
-    memesData.data.memes
+    // memesData.data.memes
+    []
   );
+
+  console.log(allMemeImages);
+
+  React.useEffect(() => {
+    // console.log("ran useEffect");
+    fetch(`https://api.imgflip.com/get_memes`)
+      .then((res) => res.json())
+      .then((data) => setAllMemeImages(data.data.memes));
+  }, []);
 
   function getMemeImage() {
     const randomMeme =
       allMemeImages[Math.floor(Math.random() * allMemeImages.length)];
     setMeme((prevState) => ({ ...prevState, randomImage: randomMeme.url }));
-    console.log(meme);
+    // console.log(meme);
   }
 
-  console.log(meme);
+  // console.log(meme);
 
   function handleChange(event) {
     const { name, value } = event.target;
